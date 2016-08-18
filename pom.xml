@@ -5,11 +5,25 @@
     <artifactId>AddressBook</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    
+    
+    <repositories>
+        <repository>
+            <id>ECI internal repository</id>
+            <url>http://hectorateci.github.io/maven/repository/</url>
+        </repository>
+    </repositories>    
+    
     <dependencies>
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>co.edu.eci.pdsw.artifacts</groupId>
+            <artifactId>open-ddress-book</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
     <properties>

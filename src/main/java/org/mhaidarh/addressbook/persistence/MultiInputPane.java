@@ -1,4 +1,4 @@
-package main.java;
+package org.mhaidarh.addressbook.persistence;
 
 /**
  * Part of Addrook
