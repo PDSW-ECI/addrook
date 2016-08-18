@@ -92,7 +92,7 @@ public class AddrookSimpleDBApp extends JFrame {
     insertButton = new JButton();
 
     setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-    setSize(400, 300);
+    setSize(400, 600);
     setResizable(false);
 
     navigatePanel.setLayout(

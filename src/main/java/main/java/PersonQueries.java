@@ -18,12 +18,15 @@ package main.java;
 // PreparedStatements used by the Address Book application.
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersonQueries {
 
@@ -39,7 +42,12 @@ public class PersonQueries {
   // constructor
   public PersonQueries() {
     try {
+
+      
       Class.forName(driver).newInstance();
+      
+      
+      
       connection = DriverManager.getConnection(url);
       // create query that create a new table for AddressBook
       createNewTable =
@@ -72,20 +80,16 @@ public class PersonQueries {
               "( FirstName, LastName, Address, City, State, ZIP, Phone, Email ) " +
               "VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )");
     } catch (SQLException sqle) {
-      System.err.println("\nUnable to use SQL\n" + driver);
+      System.err.println("\nUnable to use SQL\n");
       sqle.printStackTrace();
       sqle.printStackTrace(System.err);
-    } catch (ClassNotFoundException cnfe) {
-      System.err.println("\nUnable to load the JDBC driver\n" + driver);
-      System.err.println("\nPlease check your CLASSPATH.");
-      cnfe.printStackTrace(System.err);
-    } catch (InstantiationException ie) {
-      System.err.println("\nUnable to instantiate the JDBC driver\n" + driver);
-      ie.printStackTrace(System.err);
-    } catch (IllegalAccessException iae) {
-      System.err.println("\nNot allowed to access the JDBC driver\n" + driver);
-      iae.printStackTrace(System.err); 
-    }
+    } catch (InstantiationException ex) { 
+          Logger.getLogger(PersonQueries.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (IllegalAccessException ex) {
+          Logger.getLogger(PersonQueries.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(PersonQueries.class.getName()).log(Level.SEVERE, null, ex);
+      } 
   }
 
   // select all of the person information in the database
